@@ -1,0 +1,152 @@
+.head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+.eyebrow {
+  display: block;
+  font-size: 0.65rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+.heading {
+  font-size: clamp(1.6rem, 2.5vw, 2.1rem);
+  font-weight: 600;
+  margin: 0.3rem 0 0;
+}
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.7rem 1.1rem;
+  border-radius: 8px;
+  background: var(--accent);
+  color: #1a1d24;
+  font-weight: 600;
+  font-size: 0.86rem;
+  border: none;
+}
+.cta:hover { filter: brightness(1.05); }
+
+.error {
+  padding: 0.8rem 1rem;
+  border: 1px solid rgba(213, 101, 101, 0.4);
+  background: rgba(213, 101, 101, 0.08);
+  border-radius: 8px;
+  color: var(--bad);
+  font-size: 0.9rem;
+  margin-bottom: 1.4rem;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+  margin-bottom: 2.2rem;
+}
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 1.2rem 1.1rem;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+.statBig { grid-column: span 2; }
+.tone_warn { border-color: rgba(216, 163, 90, 0.5); }
+.statLabel {
+  font-size: 0.62rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+.statValue {
+  font-size: 1.7rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.statSub {
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 1.4rem;
+}
+.panelHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+.panelTitle {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.muted { color: var(--ink-mute); margin: 0; }
+
+.orderList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.orderRow {
+  display: grid;
+  grid-template-columns: 1fr auto auto auto;
+  gap: 1rem;
+  align-items: center;
+  padding: 0.8rem 0;
+  border-top: 1px solid var(--line);
+}
+.orderRow:first-child { border-top: none; }
+.orderMain { display: flex; flex-direction: column; }
+.orderNumber { font-weight: 600; font-size: 0.92rem; }
+.orderDate { color: var(--ink-mute); font-size: 0.78rem; }
+.orderTotal { font-weight: 600; }
+.pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.66rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  border: 1px solid var(--line);
+  background: var(--panel-soft);
+  color: var(--ink-soft);
+}
+.pill_paid, .pill_confirmed, .pill_delivered {
+  border-color: rgba(93, 178, 143, 0.4);
+  color: var(--good);
+  background: rgba(93, 178, 143, 0.08);
+}
+.pill_failed, .pill_cancelled {
+  border-color: rgba(213, 101, 101, 0.4);
+  color: var(--bad);
+  background: rgba(213, 101, 101, 0.08);
+}
+.pill_created, .pill_pending {
+  border-color: rgba(216, 163, 90, 0.4);
+  color: var(--warn);
+  background: rgba(216, 163, 90, 0.08);
+}
+
+@media (max-width: 1024px) {
+  .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .statBig { grid-column: span 2; }
+}
+@media (max-width: 600px) {
+  .head { flex-direction: column; align-items: flex-start; }
+  .cards { grid-template-columns: 1fr; }
+  .statBig { grid-column: auto; }
+  .orderRow { grid-template-columns: 1fr; }
+}
