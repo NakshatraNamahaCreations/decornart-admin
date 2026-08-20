@@ -31,7 +31,7 @@ export default function LoginPage() {
       <section className={styles.card}>
         <header className={styles.head}>
           <span className={styles.brand}>
-            Decornart<span>.</span>
+            Decor N Art<span>.</span>
           </span>
           <span className={styles.tag}>Atelier console</span>
         </header>

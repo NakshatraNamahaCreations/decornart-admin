@@ -1,13 +1,26 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useAuth } from "@/components/providers/AuthProvider";
 import styles from "./AdminShell.module.css";
 
 const NAV = [
   { href: "/", label: "Dashboard", icon: "▦" },
+  { href: "/orders", label: "Orders", icon: "⌂" },
+  { href: "/payments", label: "Payments", icon: "₹" },
   { href: "/products", label: "Products", icon: "◇" },
+  { href: "/inventory", label: "Inventory", icon: "▣" },
+  { href: "/categories", label: "Categories", icon: "▤" },
+  { href: "/customers", label: "Customers", icon: "◉" },
+  { href: "/enquiries", label: "Enquiries", icon: "✉" },
+  { href: "/coupons", label: "Coupons", icon: "%" },
+  { href: "/banners", label: "Banners", icon: "▭" },
+  { href: "/diy-videos", label: "Product Showcase Videos", icon: "▶" },
+  { href: "/instagram-posts", label: "Instagram", icon: "◐" },
+  { href: "/reports", label: "Reports", icon: "◈" },
+  { href: "/settings", label: "Shipping Settings", icon: "⚙" },
 ];
 
 export default function AdminShell({ children }) {
@@ -28,11 +41,14 @@ export default function AdminShell({ children }) {
     <div className={styles.shell}>
       <aside className={styles.sidebar}>
         <div className={styles.brand}>
-          <span className={styles.brandMark}>D</span>
-          <span className={styles.brandWord}>
-            Decornart<span>.</span>
-          </span>
-          <span className={styles.brandTag}>Admin Dashboard</span>
+          <Image
+            src="/new-logo-1.png"
+            alt="Decor N Art"
+            width={220}
+            height={80}
+            priority
+            className={styles.brandLogo}
+          />
         </div>
 
         <nav className={styles.nav} aria-label="Primary">

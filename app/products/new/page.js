@@ -4,14 +4,17 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import AdminShell from "@/components/AdminShell/AdminShell";
 import ProductForm from "@/components/ProductForm/ProductForm";
+import { useToast } from "@/components/providers/ToastProvider";
 import { createProduct } from "@/lib/api/admin";
 import styles from "../products.module.css";
 
 export default function NewProductPage() {
   const router = useRouter();
+  const toast = useToast();
 
   const onSubmit = async (payload) => {
     await createProduct(payload);
+    toast.success("Product added successfully");
     router.push("/products");
   };
 

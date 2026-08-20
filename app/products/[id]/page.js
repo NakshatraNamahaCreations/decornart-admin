@@ -5,17 +5,18 @@ import Link from "next/link";
 import { useRouter, useParams } from "next/navigation";
 import AdminShell from "@/components/AdminShell/AdminShell";
 import ProductForm from "@/components/ProductForm/ProductForm";
+import { useToast } from "@/components/providers/ToastProvider";
 import { deleteProduct, getProduct, updateProduct } from "@/lib/api/admin";
 import styles from "../products.module.css";
 
 export default function EditProductPage() {
   const router = useRouter();
   const params = useParams();
+  const toast = useToast();
   const id = params?.id;
 
   const [product, setProduct] = useState(null);
   const [status, setStatus] = useState("loading"); // loading | ready | error | not-found
-  const [savedNote, setSavedNote] = useState("");
   const [error, setError] = useState("");
 
   useEffect(() => {
@@ -44,10 +45,9 @@ export default function EditProductPage() {
   }, [id]);
 
   const onSubmit = async (payload) => {
-    const updated = await updateProduct(id, payload);
-    setProduct(updated);
-    setSavedNote("Saved.");
-    setTimeout(() => setSavedNote(""), 1800);
+    await updateProduct(id, payload);
+    toast.success("Product added successfully");
+    router.push("/products");
   };
 
   const onDelete = async () => {
@@ -103,7 +103,6 @@ export default function EditProductPage() {
           <h1 className={styles.heading}>{product.name}</h1>
         </div>
         <div style={{ display: "flex", gap: "0.6rem", alignItems: "center" }}>
-          {savedNote && <span style={{ color: "var(--good)", fontSize: "0.85rem" }}>{savedNote}</span>}
           <button
             type="button"
             onClick={onDelete}

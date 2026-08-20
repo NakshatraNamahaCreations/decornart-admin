@@ -1,0 +1,187 @@
+.head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.6rem;
+}
+.eyebrow {
+  display: block;
+  font-size: 0.65rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+.heading {
+  font-size: clamp(1.6rem, 2.5vw, 2.1rem);
+  font-weight: 600;
+  margin: 0.3rem 0 0;
+}
+.cta {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.7rem 1.1rem;
+  border-radius: 8px;
+  background: var(--accent);
+  color: var(--on-accent);
+  font-weight: 600;
+  font-size: 0.86rem;
+  border: none;
+  cursor: pointer;
+}
+.cta:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.toolbar {
+  display: flex;
+  gap: 0.6rem;
+  margin-bottom: 1.2rem;
+  flex-wrap: wrap;
+}
+.search,
+.select {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 0.6rem 0.85rem;
+  color: var(--ink);
+  outline: none;
+  transition: border-color 0.2s var(--ease);
+  font-size: 0.86rem;
+}
+.search { flex: 1; min-width: 220px; }
+.search:focus,
+.select:focus { border-color: var(--accent); }
+
+.error {
+  padding: 0.8rem 1rem;
+  border: 1px solid rgba(213, 101, 101, 0.45);
+  background: rgba(213, 101, 101, 0.08);
+  color: var(--bad);
+  border-radius: 8px;
+  margin: 0 0 1rem;
+  font-size: 0.9rem;
+}
+
+.tableWrap {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: auto;
+}
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  min-width: 900px;
+}
+.table th {
+  text-align: left;
+  font-size: 0.66rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  font-weight: 500;
+  padding: 0.9rem 1rem;
+  border-bottom: 1px solid var(--line);
+  background: var(--panel-soft);
+}
+.table td {
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid var(--line);
+  vertical-align: middle;
+}
+.table tbody tr:last-child td { border-bottom: none; }
+.table tbody tr:hover { background: var(--panel-soft); }
+
+.name { font-weight: 600; color: var(--ink); }
+.mute { color: var(--ink-mute); font-size: 0.8rem; }
+.linkStrong {
+  color: var(--ink);
+  font-weight: 600;
+  text-decoration: none;
+}
+.linkStrong:hover { color: var(--accent); }
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.66rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  border: 1px solid var(--line);
+  background: var(--panel-soft);
+  color: var(--ink-soft);
+}
+.pill_paid,
+.pill_delivered {
+  border-color: rgba(93, 178, 143, 0.4);
+  color: var(--good);
+  background: rgba(93, 178, 143, 0.08);
+}
+.pill_confirmed,
+.pill_processing,
+.pill_shipped {
+  border-color: rgba(75, 31, 79, 0.32);
+  color: var(--status-processing);
+  background: rgba(75, 31, 79, 0.08);
+}
+.pill_pending,
+.pill_created {
+  border-color: rgba(216, 163, 90, 0.4);
+  color: var(--warn);
+  background: rgba(216, 163, 90, 0.08);
+}
+.pill_failed,
+.pill_cancelled,
+.pill_refunded {
+  border-color: rgba(213, 101, 101, 0.4);
+  color: var(--bad);
+  background: rgba(213, 101, 101, 0.08);
+}
+
+.actionsCell {
+  text-align: right;
+  white-space: nowrap;
+}
+.action {
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--ink-soft);
+  padding: 0.4rem 0.7rem;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  text-decoration: none;
+  transition: border-color 0.2s var(--ease), color 0.2s var(--ease);
+}
+.action:hover {
+  border-color: var(--accent);
+  color: var(--ink);
+}
+
+.muted {
+  color: var(--ink-mute);
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.pager {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-top: 1.4rem;
+}
+.pageBtn {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  color: var(--ink-soft);
+  padding: 0.45rem 0.9rem;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  cursor: pointer;
+}
+.pageBtn:disabled { opacity: 0.5; cursor: not-allowed; }
+.pageBtn:hover:not(:disabled) { border-color: var(--accent); color: var(--ink); }
+.pageInfo { color: var(--ink-mute); font-size: 0.82rem; }

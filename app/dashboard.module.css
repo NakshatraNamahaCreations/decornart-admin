@@ -24,7 +24,7 @@
   padding: 0.7rem 1.1rem;
   border-radius: 8px;
   background: var(--accent);
-  color: #1a1d24;
+  color: var(--on-accent);
   font-weight: 600;
   font-size: 0.86rem;
   border: none;
@@ -79,6 +79,7 @@
   border: 1px solid var(--line);
   border-radius: 12px;
   padding: 1.4rem;
+  margin-bottom: 1.4rem;
 }
 .panelHead {
   display: flex;
@@ -90,6 +91,150 @@
   margin: 0;
   font-size: 1rem;
   font-weight: 600;
+}
+.panelLink {
+  color: var(--accent);
+  font-size: 0.78rem;
+  text-decoration: none;
+}
+.panelLink:hover { text-decoration: underline; }
+
+/* Side-by-side panels (sales + status, top sellers + low stock). */
+.twoCol {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1.4rem;
+}
+.twoCol > .panel { margin-bottom: 0; }
+
+/* Sales chart. */
+.chartWrap { position: relative; }
+.chart {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.chartBaseline {
+  stroke: var(--line);
+  stroke-width: 1;
+}
+.chartBar {
+  fill: var(--accent);
+  transition: fill 0.15s var(--ease);
+}
+.chartBar:hover {
+  fill: var(--status-processing);
+}
+.chartBarEmpty {
+  fill: var(--line);
+}
+.chartAxis {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.4rem;
+  font-size: 0.7rem;
+  color: var(--ink-mute);
+  letter-spacing: 0.08em;
+}
+
+/* Status breakdown bars. */
+.breakdown {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+.breakdownRow {
+  display: grid;
+  grid-template-columns: 80px 1fr auto;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.82rem;
+}
+.breakdownLabel {
+  text-transform: capitalize;
+  color: var(--ink-soft);
+}
+.breakdownBar {
+  position: relative;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--panel-soft);
+  overflow: hidden;
+}
+.breakdownFill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  background: var(--ink-mute);
+  border-radius: 999px;
+  transition: width 0.4s var(--ease);
+}
+.fill_pending    { background: var(--warn); }
+.fill_confirmed  { background: var(--accent); }
+.fill_processing { background: var(--status-processing); }
+.fill_shipped    { background: var(--status-shipped); }
+.fill_delivered  { background: var(--good); }
+.fill_cancelled  { background: var(--bad); }
+.breakdownCount {
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+  font-weight: 600;
+  white-space: nowrap;
+}
+.breakdownPct {
+  color: var(--ink-mute);
+  font-weight: 400;
+  font-size: 0.76rem;
+}
+
+/* Top-sellers / low-stock lists share these styles. */
+.topList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+.topRow {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.topRank {
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  border-radius: 6px;
+  background: var(--panel-soft);
+  color: var(--ink-mute);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+.topRankWarn {
+  color: var(--warn);
+  background: rgba(216, 163, 90, 0.12);
+}
+.topText { display: flex; flex-direction: column; min-width: 0; }
+.topName {
+  color: var(--ink);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+a.topName:hover { color: var(--accent); }
+.topSub {
+  font-size: 0.76rem;
+  color: var(--ink-mute);
 }
 
 .muted { color: var(--ink-mute); margin: 0; }
@@ -143,10 +288,12 @@
 @media (max-width: 1024px) {
   .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .statBig { grid-column: span 2; }
+  .twoCol { grid-template-columns: 1fr; }
 }
 @media (max-width: 600px) {
   .head { flex-direction: column; align-items: flex-start; }
   .cards { grid-template-columns: 1fr; }
   .statBig { grid-column: auto; }
   .orderRow { grid-template-columns: 1fr; }
+  .breakdownRow { grid-template-columns: 68px 1fr auto; }
 }

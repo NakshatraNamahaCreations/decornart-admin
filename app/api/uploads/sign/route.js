@@ -42,7 +42,7 @@ export async function POST(request) {
     return NextResponse.json(
       {
         error:
-          "Cloudinary is not configured. Set CLOUDINARY_CLOUD_NAME, CLOUDINARY_API_KEY, and CLOUDINARY_API_SECRET in decornart-admin/.env.local.",
+          "Cloudinary is not configured. Set CLOUDINARY_CLOUD_NAME, CLOUDINARY_API_KEY, and CLOUDINARY_API_SECRET in Decor N Art-admin/.env.local.",
       },
       { status: 500 }
     );
@@ -59,7 +59,7 @@ export async function POST(request) {
   } catch {
     /* empty body is fine */
   }
-  const folder = (body.folder || "decornart/products").toString();
+  const folder = (body.folder || "Decor N Art/products").toString();
   const timestamp = Math.floor(Date.now() / 1000);
 
   cloudinary.config({

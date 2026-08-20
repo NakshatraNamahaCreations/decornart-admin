@@ -1,20 +1,57 @@
 :root {
-  --bg: #f8f5f0;
-  --bg-soft: #f1eae0;
-  --panel: #ffffff;
-  --panel-soft: #f6efe6;
-  --line: #e6dfd4;
-  --ink: #2a201c;
-  --ink-soft: #5a514a;
-  --ink-mute: #8c857d;
-  --accent: #c98a82;
-  --accent-soft: rgba(201, 138, 130, 0.16);
+  /* Palette mirrors the storefront's brand set:
+     #301038  deep-plum   — primary dark (sidebar bg, body ink)
+     #6E1C91  plum-accent — CTAs, active nav, links
+     #F3E6FA  lavender    — soft tint / hover well
+     #FAF8F8  soft-lilac  — page + card background
+     #ECE6F1  border      — hairline dividers
+     #606060  muted       — secondary text
+     Layout hierarchy: deep-plum sidebar → soft-lilac content → white
+     panels → plum-accent CTAs. Sidebar has its own token set so the
+     plum bg doesn't leak into inputs / tables. */
+
+  --bg: #FAF8F8;                          /* soft lilac — main content bg */
+  --bg-soft: #F3E6FA;                     /* lavender — inputs, subtle wells */
+  --panel: #FFFFFF;                       /* crisp white cards */
+  --panel-soft: #F3E6FA;                  /* lavender — table heads, hover rows */
+  --line: rgba(48, 16, 56, 0.1);          /* plum-tinted divider */
+
+  --ink: #301038;                         /* deep plum — body text */
+  --ink-soft: rgba(48, 16, 56, 0.68);
+  --ink-mute: rgba(48, 16, 56, 0.5);
+
+  --accent: #6E1C91;                      /* plum accent — CTAs */
+  --accent-soft: rgba(110, 28, 145, 0.14);
+  --on-accent: #FAF8F8;                   /* soft lilac text on plum buttons */
+
+  /* Sidebar (deep plum) — dedicated tokens so the rest of the app stays light. */
+  --sidebar-bg: #301038;
+  --sidebar-soft: #3E1848;                /* nav-item hover */
+  --sidebar-line: rgba(243, 230, 250, 0.1);
+  --sidebar-ink: #F3E6FA;                 /* main sidebar text (lavender) */
+  --sidebar-ink-mute: rgba(243, 230, 250, 0.6);
+  --sidebar-accent: #F3E6FA;              /* lavender pops on plum */
+  --sidebar-active-bg: rgba(243, 230, 250, 0.18);
+
+  /* Semantic status hues — muted so they read on soft-lilac without shouting. */
   --good: #3f8a6a;
   --warn: #a87837;
   --bad: #b94545;
+
+  /* Order-status specific tones so pills stay visually distinct across the
+     pending → confirmed → processing → shipped → delivered flow. */
+  --status-processing: #6E1C91;           /* plum accent */
+  --status-shipped: #8B5A3C;              /* warm terracotta */
+
+  /* Typography — mirrors the storefront: Cormorant for display, Poppins for
+     body, Allura for the occasional script accent. */
+  --font-display: var(--font-cormorant), "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --font-body: var(--font-poppins), "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-script: var(--font-allura), "Allura", cursive;
+
   --radius: 10px;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
-  --shadow: 0 8px 32px -16px rgba(58, 18, 29, 0.18);
+  --shadow: 0 8px 32px -16px rgba(48, 16, 56, 0.22);
   color-scheme: light;
 }
 
@@ -26,18 +63,21 @@ html,
 body {
   margin: 0;
   padding: 0;
-  font-family:
-    var(--font-jakarta),
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    system-ui,
-    sans-serif;
+  font-family: var(--font-body);
   font-size: 15px;
   background: var(--bg);
   color: var(--ink);
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Cormorant for headings — matches the storefront's editorial tone. */
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  line-height: 1.15;
 }
 
 a {

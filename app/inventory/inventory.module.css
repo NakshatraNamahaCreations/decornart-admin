@@ -1,0 +1,376 @@
+.head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.6rem;
+}
+.eyebrow {
+  display: block;
+  font-size: 0.65rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+.heading {
+  font-size: clamp(1.6rem, 2.5vw, 2.1rem);
+  font-weight: 700;
+  margin: 0.3rem 0 0;
+}
+
+/* ── Filter card ── */
+.filterCard {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 1.6rem 1.8rem 1.4rem;
+  margin-bottom: 1.6rem;
+  box-shadow: 0 6px 24px -18px rgba(0, 0, 0, 0.35);
+}
+.filterTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0 0 1.2rem;
+  color: var(--ink);
+}
+.filterGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.1rem;
+  margin-bottom: 1rem;
+}
+@media (max-width: 720px) {
+  .filterGrid { grid-template-columns: 1fr; }
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  min-width: 0;
+}
+.fieldLabel {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--ink);
+}
+.input {
+  width: 100%;
+  padding: 0.7rem 0.9rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+  color: var(--ink);
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.2s var(--ease);
+}
+.input:focus { border-color: var(--accent); }
+.multi { min-height: 92px; padding: 0.45rem; }
+.multi option {
+  padding: 0.35rem 0.55rem;
+  border-radius: 4px;
+}
+.hint {
+  font-size: 0.72rem;
+  color: var(--ink-mute);
+  margin-top: 0.15rem;
+}
+.linkBtn {
+  background: none;
+  border: none;
+  color: var(--accent);
+  cursor: pointer;
+  padding: 0;
+  font: inherit;
+  text-decoration: underline;
+}
+
+.filterActions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding-top: 0.4rem;
+  border-top: 1px dashed var(--line);
+}
+.filterButtons {
+  display: inline-flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--ink-soft);
+  font-size: 0.86rem;
+  cursor: pointer;
+}
+.toggle input { accent-color: var(--accent); }
+.toggle em {
+  font-style: normal;
+  color: var(--ink-mute);
+  font-size: 0.78rem;
+}
+
+/* Accent buttons — match reference (orange primary). Uses admin's
+   accent tokens so it stays on-brand if those change later. */
+.primary,
+.primaryAlt {
+  padding: 0.65rem 1.1rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: transform 0.1s var(--ease), opacity 0.2s var(--ease);
+}
+.primary {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+.primaryAlt {
+  background: color-mix(in srgb, var(--accent) 82%, black 18%);
+  color: var(--on-accent);
+}
+.primary:disabled,
+.primaryAlt:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+.primary:hover:not(:disabled),
+.primaryAlt:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+.ghost {
+  padding: 0.55rem 0.9rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--ink-soft);
+  font-size: 0.82rem;
+  cursor: pointer;
+}
+.ghost:hover { border-color: var(--accent); color: var(--ink); }
+
+/* ── Stats strip ── */
+.statsStrip {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.8rem;
+  margin-bottom: 1.2rem;
+}
+@media (max-width: 720px) {
+  .statsStrip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+.stat {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0.85rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+.statLow {
+  border-color: rgba(213, 101, 101, 0.35);
+  background: rgba(213, 101, 101, 0.05);
+}
+.statOut {
+  border-color: rgba(213, 101, 101, 0.55);
+  background: rgba(213, 101, 101, 0.09);
+}
+.statLabel {
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+.statValue {
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.error {
+  padding: 0.8rem 1rem;
+  border: 1px solid rgba(213, 101, 101, 0.45);
+  background: rgba(213, 101, 101, 0.08);
+  color: var(--bad);
+  border-radius: 8px;
+  margin: 0 0 1rem;
+  font-size: 0.9rem;
+}
+.emptyState {
+  padding: 2rem 1rem;
+  color: var(--ink-mute);
+  text-align: center;
+  border: 1px dashed var(--line);
+  border-radius: 12px;
+  background: var(--panel);
+}
+
+/* ── Results table ── */
+.tableWrap {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: auto;
+}
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  min-width: 780px;
+}
+.table th {
+  text-align: left;
+  font-size: 0.66rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  font-weight: 500;
+  padding: 0.9rem 1rem;
+  border-bottom: 1px solid var(--line);
+  background: var(--panel-soft);
+}
+.table td {
+  padding: 0.7rem 1rem;
+  border-bottom: 1px solid var(--line);
+  vertical-align: middle;
+}
+.table tbody tr:last-child td { border-bottom: none; }
+.table tbody tr:hover { background: var(--panel-soft); }
+.numeric { text-align: right; font-variant-numeric: tabular-nums; }
+
+.itemCell {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-width: 0;
+}
+.itemText {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.linkStrong {
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 600;
+}
+.linkStrong:hover { color: var(--accent); }
+.mute { color: var(--ink-mute); font-size: 0.82rem; }
+
+.thumb {
+  position: relative;
+  width: 52px;
+  height: 52px;
+  flex: 0 0 auto;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+}
+.thumbEmpty {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  color: var(--ink-mute);
+  font-size: 0.9rem;
+}
+
+.variantRow {
+  background: color-mix(in srgb, var(--panel-soft) 55%, transparent);
+}
+.variantRow:hover { background: var(--panel-soft); }
+.variantDash {
+  display: inline-grid;
+  place-items: center;
+  width: 52px;
+  height: 24px;
+  color: var(--ink-mute);
+  font-size: 1rem;
+}
+
+.stockCell {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  justify-content: flex-end;
+}
+.stockInput {
+  width: 80px;
+  padding: 0.4rem 0.55rem;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  color: var(--ink);
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.2s var(--ease);
+}
+.stockInput:focus { border-color: var(--accent); }
+.stockInput:disabled { opacity: 0.6; }
+
+.lowPill {
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  color: var(--bad);
+  background: rgba(213, 101, 101, 0.1);
+  border: 1px solid rgba(213, 101, 101, 0.35);
+}
+.savedHint {
+  font-size: 0.72rem;
+  color: var(--good, #2f9e6d);
+}
+
+.rowActions {
+  text-align: right;
+  white-space: nowrap;
+}
+.action {
+  padding: 0.4rem 0.7rem;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  color: var(--ink-soft);
+  font-size: 0.78rem;
+  text-decoration: none;
+  transition: border-color 0.2s var(--ease), color 0.2s var(--ease);
+}
+.action:hover { border-color: var(--accent); color: var(--ink); }
+
+.muted {
+  color: var(--ink-mute);
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.pager {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-top: 1.4rem;
+}
+.pageBtn {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  color: var(--ink-soft);
+  padding: 0.45rem 0.9rem;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  cursor: pointer;
+}
+.pageBtn:disabled { opacity: 0.5; cursor: not-allowed; }
+.pageBtn:hover:not(:disabled) { border-color: var(--accent); color: var(--ink); }
+.pageInfo { color: var(--ink-mute); font-size: 0.82rem; }

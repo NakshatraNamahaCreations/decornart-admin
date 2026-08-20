@@ -1,0 +1,180 @@
+.head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.6rem;
+}
+.eyebrow {
+  display: block;
+  font-size: 0.65rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+.heading {
+  font-size: clamp(1.6rem, 2.5vw, 2.1rem);
+  font-weight: 600;
+  margin: 0.3rem 0 0;
+}
+
+.muted { color: var(--ink-mute); margin: 0.5rem 0 0; font-size: 0.86rem; max-width: 60ch; }
+.mute { color: var(--ink-mute); font-size: 0.82rem; }
+.inlineLink { color: var(--accent); text-decoration: none; }
+.inlineLink:hover { text-decoration: underline; }
+
+.error {
+  padding: 0.8rem 1rem;
+  border: 1px solid rgba(213, 101, 101, 0.45);
+  background: rgba(213, 101, 101, 0.08);
+  color: var(--bad);
+  border-radius: 8px;
+  margin: 0 0 1rem;
+  font-size: 0.9rem;
+}
+
+.section {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 1.3rem;
+  margin-bottom: 1rem;
+}
+.sectionTitle {
+  margin: 0 0 1rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.createForm { display: flex; flex-direction: column; gap: 0.9rem; }
+.formGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+.field { display: flex; flex-direction: column; gap: 0.3rem; }
+.label {
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+.input {
+  background: var(--panel-soft);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 0.55rem 0.75rem;
+  color: var(--ink);
+  outline: none;
+  transition: border-color 0.2s var(--ease);
+  font: inherit;
+  font-size: 0.9rem;
+}
+.input:focus { border-color: var(--accent); }
+
+.toggleRow {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+}
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--ink);
+  font-size: 0.86rem;
+}
+.toggle input { accent-color: var(--accent); }
+
+.submit {
+  margin-left: auto;
+  background: var(--accent);
+  color: var(--on-accent);
+  padding: 0.6rem 1.1rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.86rem;
+  border: none;
+  cursor: pointer;
+}
+.submit:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.tableWrap {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: auto;
+}
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+  min-width: 900px;
+}
+.table th {
+  text-align: left;
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  font-weight: 500;
+  padding: 0.7rem 0.9rem;
+  border-bottom: 1px solid var(--line);
+  background: var(--panel-soft);
+}
+.table td {
+  padding: 0.75rem 0.9rem;
+  border-bottom: 1px solid var(--line);
+  vertical-align: middle;
+}
+.table tbody tr:last-child td { border-bottom: none; }
+.table tbody tr:hover { background: var(--panel-soft); }
+
+.name { font-weight: 600; color: var(--ink); }
+.mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  color: var(--ink-soft);
+}
+.yes { color: var(--good); font-weight: 600; }
+.no { color: var(--ink-mute); }
+
+.pill {
+  padding: 0.25rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.66rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  border: 1px solid var(--line);
+  background: var(--panel-soft);
+  color: var(--ink-soft);
+  cursor: pointer;
+}
+.pill:disabled { opacity: 0.5; cursor: not-allowed; }
+.pill_active {
+  border-color: rgba(93, 178, 143, 0.4);
+  color: var(--good);
+  background: rgba(93, 178, 143, 0.08);
+}
+.pill_inactive { color: var(--ink-mute); }
+
+.actionsCell { text-align: right; white-space: nowrap; }
+.action {
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--ink-soft);
+  padding: 0.4rem 0.7rem;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition: border-color 0.2s var(--ease), color 0.2s var(--ease);
+}
+.action:hover:not(:disabled) { border-color: var(--accent); color: var(--ink); }
+.actionDanger:hover:not(:disabled) { border-color: var(--bad); color: var(--bad); }
+.action:disabled { opacity: 0.5; cursor: not-allowed; }
+
+@media (max-width: 1024px) {
+  .formGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 560px) {
+  .formGrid { grid-template-columns: 1fr; }
+}

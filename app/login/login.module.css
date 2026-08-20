@@ -4,8 +4,8 @@
   place-items: center;
   padding: 2rem 1rem;
   background:
-    radial-gradient(1200px 600px at 30% -10%, rgba(201, 138, 130, 0.12), transparent 60%),
-    radial-gradient(900px 600px at 100% 100%, rgba(201, 138, 130, 0.08), transparent 60%),
+    radial-gradient(1200px 600px at 30% -10%, rgba(111, 42, 94, 0.14), transparent 60%),
+    radial-gradient(900px 600px at 100% 100%, rgba(75, 31, 79, 0.1), transparent 60%),
     var(--bg);
 }
 
@@ -89,7 +89,7 @@
   margin-top: 0.4rem;
   padding: 0.85rem 1rem;
   background: var(--accent);
-  color: #1a1d24;
+  color: var(--on-accent);
   border: none;
   border-radius: 8px;
   font-weight: 600;
